@@ -1,0 +1,660 @@
+{
+	"info": {
+		"_postman_id": "8571f72d-62a5-4f9e-9ceb-7704fc510771",
+		"name": "nest-api-init",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16243654"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"register_type\": \"phone\",\r\n    \"username\": \"RTe Phone\",\r\n    \"country_code\": \"52\",\r\n    \"phone\": \"6691283472381\",\r\n    \"password\": \"ElJuubi5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_host}}/auth/register",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"vjuubi@gmail.com\",\r\n    \"password\": \"DevPass#\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_host}}/auth/login",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OAuth Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"Y0Q91\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_host}}/auth/oauth-login",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"auth",
+								"oauth-login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.headers.add({key: 'User-Agent', value: 'Mozilla/5.0 (Linux; Android 9; SM-G973U Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36'});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ip-simulated",
+								"value": "46.137.79.134",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"vjuubi@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_host}}/auth/forgot-password",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Code",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ip-simulated",
+								"value": "46.137.79.134",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"XLUOK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_host}}/auth/verify-code",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"auth",
+								"verify-code"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.headers.add({key: 'User-Agent', value: 'Mozilla/5.0 (iPhone14,3; U; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19A346 Safari/602.1'});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "ip-simulated",
+								"value": "46.137.79.134",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"XLUOK\",\r\n    \"password\": \"PassDev#\",\r\n    \"repeatPassword\": \"PassDev#\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_host}}/auth/new-password",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"auth",
+								"new-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Status",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"auth4@gmail.com\",\r\n    \"password\": \"ElJuubi5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_host}}/auth/check-status",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"auth",
+								"check-status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"signup_type\": \"email\",\r\n    \"username\": \"El Juubi\",\r\n    \"email\": \"eljuubi@gmail.com\",\r\n    \"password\": \"ElJuubi5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_host}}/user",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_host}}/user?page=1&limit=10&order[sort]=-1",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "as",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "surname",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "online",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "order[sort]",
+									"value": "-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find One",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_host}}/user/6336f2f8fcd6834fc4ee3c1c",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"user",
+								"6336f2f8fcd6834fc4ee3c1c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find By User (Username)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_host}}/user/username/a",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"user",
+								"username",
+								"a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_host}}/user/auth/my-profile",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"user",
+								"auth",
+								"my-profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "Erick Phone",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "country_code",
+									"value": "52",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "6691438665",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Erick",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "surname",
+									"value": "Cinco",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": [
+										"/D:/Anime/Anime/1 - copia.jpg",
+										"/D:/Anime/Anime/2 - copia.jpg",
+										"/D:/Anime/Anime/3 - copia.jpg",
+										"/D:/Anime/Anime/4 - copia.jpg",
+										"/D:/Anime/Anime/5 - copia.jpg"
+									]
+								},
+								{
+									"key": "background",
+									"type": "file",
+									"src": [
+										"/D:/Anime/Anime/1.jpg",
+										"/D:/Anime/Anime/2.jpg",
+										"/D:/Anime/Anime/3.jpg",
+										"/D:/Anime/Anime/4.jpg",
+										"/D:/Anime/Anime/5.jpg"
+									],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url_host}}/user/633f0c55516d8e51e25a6e4d",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"user",
+								"633f0c55516d8e51e25a6e4d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove All Files From",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{url_host}}/user/remove-all-files-from/avatar/633a9e9aa89967b8b575d574",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"user",
+								"remove-all-files-from",
+								"avatar",
+								"633a9e9aa89967b8b575d574"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove File From",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{url_host}}/user/remove-file-from/background/633a9e9aa89967b8b575d574/d2bef50f-be0a-43e2-a9ea-1262302135b9-2022-10-03.jpg",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"user",
+								"remove-file-from",
+								"background",
+								"633a9e9aa89967b8b575d574",
+								"d2bef50f-be0a-43e2-a9ea-1262302135b9-2022-10-03.jpg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete (Inactive)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url_host}}/user/633ba9829337761816520ba6",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"user",
+								"633ba9829337761816520ba6"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzM2YwYzU1NTE2ZDhlNTFlMjVhNmU0ZCIsImlhdCI6MTY2NTE5MTAwMCwiZXhwIjoxNjY1MTk4MjAwfQ.kcCW6EBsaWGyMAEFxgY60UHcrIy21O7aBDEyW8txdJI",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "seed",
+			"item": [
+				{
+					"name": "Execute Seed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_host}}/seed",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"seed"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "file",
+			"item": [
+				{
+					"name": "Get File By Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_host}}/assets/1686d8c3-7c79-4a3d-aac1-4ffb0164c561-2022-10-07.jpg",
+							"host": [
+								"{{url_host}}"
+							],
+							"path": [
+								"assets",
+								"1686d8c3-7c79-4a3d-aac1-4ffb0164c561-2022-10-07.jpg"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

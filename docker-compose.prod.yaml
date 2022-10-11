@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  pokedexapp:
+    depends_on:
+      - db
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: nest-server
+    container_name: nest-api
+    restart: always # reiniciar el contenedor si se detiene
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      PORT: ${PORT}
+      SERVER_URL: ${SERVER_URL}
+      API_VERSION: ${API_VERSION}
+      MONGODB: ${MONGODB}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN}
+      PAGINATION_DEFAULT_PAGE: ${PAGINATION_DEFAULT_PAGE}
+      PAGINATION_DEFAULT_LIMIT: ${PAGINATION_DEFAULT_LIMIT}
+      PAGINATION_DEFAULT_ORDER: ${PAGINATION_DEFAULT_ORDER}
+      FILE_VALID_EXTENSIONS: ${FILE_VALID_EXTENSIONS}
+      FILE_MAX_SIZE: ${FILE_MAX_SIZE}
+      FILE_UPLOAD_PLATFORM: ${FILE_UPLOAD_PLATFORM}
+      AWS_S3_ACCESS_KEY_ID: ${AWS_S3_ACCESS_KEY_ID}
+      AWS_S3_SECRET_ACCESS_KEY: ${AWS_S3_SECRET_ACCESS_KEY}
+      AWS_S3_BUCKET_NAME: ${AWS_S3_BUCKET_NAME}
+      MAIL_HOST: ${MAIL_HOST}
+      MAIL_USER: ${MAIL_USER}
+      MAIL_PASS: ${MAIL_PASS}
+      MAIL_FROM: ${MAIL_FROM}
+      SMS_ACCOUNT_SID: ${SMS_ACCOUNT_SID}
+      SMS_AUTH_TOKEN: ${SMS_AUTH_TOKEN}
+      SMS_MESSAGING_SERVICE_SID: ${SMS_MESSAGING_SERVICE_SID}
+    volumes:
+      - ./public:/usr/src/app/public
+
+  db:
+    image: mongo:5
+    container_name: mongo-nest-api
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGODB_DATABASE: nest-api
+    volumes:
+      - ./mongo:/data/db

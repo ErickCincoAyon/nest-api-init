@@ -1,0 +1,326 @@
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mada&family=Roboto+Mono:wght@100&display=swap');
+        /*
+            * font-family: 'Mada', sans-serif;
+            * font-family: 'Roboto Mono', monospace;
+        */
+
+        *, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #efeeed;
+            font-family: 'Mada', sans-serif;
+            padding-bottom: 30px;
+        }
+
+        .notify {
+            padding-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #626262;
+        }
+
+        .container {
+            width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .header {
+            width: 100%;
+            height: 80px;
+            background-color: #202020;
+            margin-bottom: 50px;
+        }
+
+        .header h1{
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            width: 100%;
+            margin: 0;
+            padding-top: 12px;
+            color: #fff;
+            font-size: 38px;
+            letter-spacing: 3px;
+            text-shadow: -1px -1px 0px #000,
+            2px 2px 0px #000,
+            3px 3px 0px #000;
+        }
+
+        .container-body {
+            width: calc(100%, '-20px');
+            padding-top: 30px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 20px;
+            margin-bottom: 50px;
+        }
+
+        .container-body h3 {
+            width: 100%;
+            font-size: 22px;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 50px;
+            color: #202020;
+        }
+
+        .container-body p {
+            width: 90%;
+            margin: 0 auto;
+            font-size: 13px;
+            color: #7e7e7e;
+            margin-bottom: 20px;
+        }
+
+        .justify-p {
+            text-align: justify;
+        }
+
+        .justify-p-request {
+            margin-bottom: 5px !important;
+        }
+
+        .justify-p-request span {
+            color: #606060 !important;
+            font-weight: bold !important;
+        }
+
+        .justify-p-date  {
+            color: #606060 !important;
+            font-weight: bold !important;
+            text-align: right !important;
+        }
+
+        .verify-email {
+            width: 90%;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding-top: 42px;
+            padding-bottom: 50px;
+            margin-bottom: 30px;
+        }
+
+        .verify-email a span {
+            text-transform: uppercase;
+            text-decoration: none;
+            text-align: center;
+            padding: 15px 20px;
+            background-color: #202020;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 2px;
+            margin-top: 40px;
+            cursor: pointer;
+            margin-right: 5px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 2px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        }
+
+        .verify-email div {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            margin: 0 auto;
+            border: 1px dashed #202020;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+        }
+
+        .verify-email div img {
+            width: 150px;
+            margin-top: 35px;
+        }
+
+        .verify-email a:hover {
+            background-color: #fff;
+            color: #202020;
+        }
+
+        .footer {
+            margin-top: 60px;
+            width: 100%;
+            text-align: center;
+            padding-bottom: 50px;
+        }
+
+        .footer .footer .image-logo {
+            text-align: center;
+            width: 200px;
+        }
+
+        .footer .social {
+            width: 50%;
+            margin: 0 auto;
+            height: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer .social a {
+            text-decoration: none;
+        }
+
+        .footer .social a div {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #202020;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+            margin-right: 30px;
+        }
+
+        .footer .social a:last-child div {
+            margin-right: 0;
+        }
+
+        .footer .social a div img {
+            width: 30px;
+        }
+
+        .footer ul {
+            width: 80%;
+            margin: 0 auto;
+            list-style: circle;
+            margin-bottom: 20px;
+        }
+
+        .footer ul li {
+            display: inline-block;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            letter-spacing: 1px;
+            color: #a7a7a7;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 0;
+            margin: 0 10px;
+        }
+
+        .footer ul li a {
+            text-decoration: none;
+        }
+
+        .footer p {
+            font-size: 12px;
+            color: #a7a7a7;
+            text-align: center;
+            width: 70%;
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+
+        @media screen and ( max-width: 600px ) {
+            .notify {
+                font-size: 8px !important;
+            }
+            .header {
+                height: 60px!important;
+            }
+            .header h1 {
+                font-size: 25px !important;
+            }
+            .container-body h3 {
+                font-size: 15px !important;
+            }
+            .container-body p {
+                font-size: 10px !important;
+            }
+            .footer p {
+                font-size: 8px !important;
+            }
+            .footer p span {
+                font-size: 6px !important;
+            }
+            .container {
+                width: 95% !important;
+                margin: 0 auto !important;
+            }
+            .verify-email a span  {
+                padding: 10px 15px !important;
+                font-size: 13px !important;
+                margin: 0 !important;
+            }
+            .footer .social {
+                width: 100% !important;
+            }
+            .footer ul li {
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p class="notify">APP Notification</p>
+    <div class="container">
+        <div class="header">
+            <h1>APP</h1>
+        </div>
+
+        <div class="container-body">
+            <h3>two-step authentication</h3>
+            <p>Hi, {{ username }},</p>
+            <p class="justify-p">Two-step authentication, make sure to copy the following code to log in to the platform.</p>
+            <div class="verify-email">
+                <a>
+                    <span>{{ codeLetter0 }}</span>
+                    <span>{{ codeLetter1 }}</span>
+                    <span>{{ codeLetter2 }}</span>
+                    <span>{{ codeLetter3 }}</span>
+                    <span>{{ codeLetter4 }}</span>
+                </a>
+            </div>
+            <p class="justify-p-request"><span>Request from</span> {{ region }}, {{ city }}, {{ country }}, {{ timezone }}.</p>
+            <p class="justify-p-request"><span>Device info</span> {{ os }}, {{ device }}, {{ client }}.</p>
+            <p class="justify-p-date">{{ date }}</p>
+            <p>To obtain more information and to be able to edit everything about your account, visit the main page in the upper section by clicking on the gear icon on the page.</p>
+            <p>Have a good day,<br>Account Protection Team APP.</p>
+        </div>
+
+        <div class="footer">
+            <div class="social">
+                <a href="#">
+                    <div>
+                        <img src="https://i.ibb.co/qJ8L26q/facebook.png" alt="facebook">
+                    </div>
+                </a>
+                <a href="#">
+                    <div>
+                        <img src="https://i.ibb.co/2tykdNc/twitter.png" alt="twitter">
+                    </div>
+                </a>
+                <a href="#">
+                    <div>
+                        <img src="https://i.ibb.co/ZGztzLW/instagram.png" alt="instagram">
+                    </div>
+                </a>
+            </div>
+            <ul>
+                <li><a>&#8226; Notice of Privacy</a></li>
+                <li><a>&#8226; Support</a></li>
+                <li><a>&#8226; Terms and Conditions</a></li>
+            </ul>
+            <p>This is a service notification email.</p>
+            <p>
+                APP, Inc. 55455 App-yama. Kernell, Shuvi, Latinoamerica © 2022 APP. All rights reserved.
+            </p>
+            <p>© 2022 APP, Inc.</p>
+        </div>
+    </div>
+</body>
+</html>

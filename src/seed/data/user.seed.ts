@@ -1,0 +1,48 @@
+import { MULTIFACTOR_AUTH_TYPES } from 'src/common/enums/multifactor-auth.enum';
+import { CreateUserDto } from 'src/user/dto/create-user.dto';
+
+export const USERS_SEED: CreateUserDto[] = [
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Juubi', email: 'vjuubi@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Shiro', email: 'shiro@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Angular', email: 'angular@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Nest', email: 'nest@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Tester', email: 'test@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Claudia', email: 'claudia@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Rene', email: 'rene@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Karen', email: 'karen@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Sherlyn', email: 'sherlyn@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Sora', email: 'sora@gmail.com', password: "DevPass#" },
+
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'TypeScript', email: 'typescript@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Red', email: 'red@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Enriqee', email: 'enriqeegd14@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Abuelo', email: 'abuelo@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Kirito', email: 'kirito@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Asuna', email: 'asuna@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Sinnon', email: 'sinnon@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Xerath', email: 'xerath@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Lulu', email: 'lulu@gmail.com', password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Kalista', email: 'kalista@gmail.com', password: "DevPass#" },
+
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Juubi Phone', country_code: 101, phone: 6691438664, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Shiro Phone', country_code: 101, phone: 6691438611, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Angular Phone', country_code: 101, phone: 6691438622, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Nest Phone', country_code: 52, phone: 6691438633, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Tester Phone', country_code: 661, phone: 6691438644, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Claudia Phone', country_code: 661, phone: 6691438655, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Rene Phone', country_code: 661, phone: 6691438666, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Karen Phone', country_code: 52, phone: 6691438677, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Sherlyn Phone', country_code: 661, phone: 6691438688, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Sora Phone', country_code: 52, phone: 6691438601, password: "DevPass#" },
+
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'TypeScript Phone', country_code: 52, phone: 6691438651, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Red Phone', country_code: 52, phone: 6691438652, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Enriqee Phone', country_code: 52, phone: 6691438653, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Abuelo Phone', country_code: 44, phone: 6691438654, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Kirito Phone', country_code: 44, phone: 6691438699, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Asuna Phone', country_code: 44, phone: 6691438656, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Sinnon Phone', country_code: 52, phone: 6691438657, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Xerath Phone', country_code: 52, phone: 6691438658, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Lulu Phone', country_code: 33, phone: 6691438659, password: "DevPass#" },
+    {   register_type: MULTIFACTOR_AUTH_TYPES.phone, username: 'Kalista Phone', country_code: 33, phone: 6691438602, password: "DevPass#" },
+]

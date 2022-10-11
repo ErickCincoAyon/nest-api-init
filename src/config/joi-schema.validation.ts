@@ -1,0 +1,25 @@
+import * as Joi from 'joi';
+
+export const JoiValidationSchema = Joi.object({
+    MONGODB: Joi.string().required(),
+    PORT: Joi.number().default(3000),
+    API_VERSION: Joi.string().default('api/v1'),
+    JWT_SECRET: Joi.string().default('styLeJuubiZekretKey'),
+    JWT_EXPIRES_IN: Joi.string().default('24h'),
+    PAGINATION_DEFAULT_PAGE: Joi.number().default(1),
+    PAGINATION_DEFAULT_LIMIT: Joi.number().default(10),
+    PAGINATION_DEFAULT_ORDER: Joi.number().default(-1),
+    FILE_VALID_EXTENSIONS: Joi.string().default('jpg,jpeg,png,gif'),
+    FILE_MAX_SIZE: Joi.number().default(1000000),
+    FILE_UPLOAD_PLATFORM: Joi.string().default('AWS_S3'),
+    AWS_S3_ACCESS_KEY_ID: Joi.string().required(),
+    AWS_S3_SECRET_ACCESS_KEY: Joi.string().required(),
+    AWS_S3_BUCKET_NAME: Joi.string().required(),
+    MAIL_HOST: Joi.string().required(),
+    MAIL_USER: Joi.string().required(),
+    MAIL_PASS: Joi.string().required(),
+    MAIL_FROM: Joi.string().required(),
+    SMS_ACCOUNT_SID: Joi.string().required(),
+    SMS_AUTH_TOKEN: Joi.string().required(),
+    SMS_MESSAGING_SERVICE_SID: Joi.string().required(),
+})
