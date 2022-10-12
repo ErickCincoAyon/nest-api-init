@@ -1,5 +1,6 @@
 import { createParamDecorator, ExecutionContext, Logger, BadRequestException } from '@nestjs/common';
 import * as geoip from 'geoip-lite';
+import * as requestIp from '@supercharge/request-ip';
 import { IDeviceInfo } from 'src/auth/interfaces/device-info.interface';
 const DeviceDetector = require('node-device-detector');
 
@@ -12,9 +13,9 @@ export const DeviceInfo = createParamDecorator(
 
         const req = ctx.switchToHttp().getRequest();
         const userAgent = req.headers['user-agent'];
-        let ip = req.ip;
+        let ip = requestIp.getClientIp(req);
 
-        if ( ip === '::1' || ip.includes('::ffff:') ) 
+        if ( ip === '::1' ) 
             ip = '46.137.79.134';
 
         if ( !userAgent )
