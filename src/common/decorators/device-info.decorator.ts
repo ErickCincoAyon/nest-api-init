@@ -15,7 +15,7 @@ export const DeviceInfo = createParamDecorator(
         const userAgent = req.headers['user-agent'];
         let ip = requestIp.getClientIp(req);
 
-        if ( ip === '::1' ) 
+        if ( ip === '::1' || ip.includes('::ffff:') ) 
             ip = '46.137.79.134';
 
         if ( !userAgent )
