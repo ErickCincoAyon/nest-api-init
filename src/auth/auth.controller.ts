@@ -33,6 +33,11 @@ export class AuthController {
     return this.authService.oauthLogin( verifyCodeDto );
   }
 
+  @Post('resend-code')
+  async resendCode( @Body() resendCodeDto: VerifyCodeDto, @DeviceInfo() deviceInfo: IDeviceInfo ) {
+    return this.authService.resendCode( resendCodeDto, deviceInfo );
+  }
+
   @Post('forgot-password')
   async forgotPassword( @Body() forgotPasswordDto: ForgotPasswordDto, @DeviceInfo() deviceInfo: IDeviceInfo ) {
     return this.authService.forgotPassword( forgotPasswordDto, deviceInfo );

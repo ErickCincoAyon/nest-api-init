@@ -31,6 +31,10 @@ export class AuthcodeService extends GenericService {
         const uniqueCode = await this.generateUniqueCode( user._id, type );
         const authCode: Authcode = await this.create({ userId: user._id, type, code: uniqueCode, deviceInfo });
 
+         /** create resendCode */
+         const resendUniqueCode = await this.generateUniqueCode( user._id, type );
+         const resendCode: Authcode = await this.create({ userId: user._id, type: AUTHCODE_TYPES.resendCode, code: resendUniqueCode, deviceInfo });
+
         try {
         
             if ( type === AUTHCODE_TYPES.accessOauth ) 
@@ -54,13 +58,15 @@ export class AuthcodeService extends GenericService {
                 ok: true, 
                 message: `created authentication code, send to email address: ${ user.email.substring(0,3) }*****@${ user.email.split('@')[1] }, after five minutes code will disappear`,
                 email: `${ user.email.substring(0,3) }*****@${ user.email.split('@')[1] }`,
+                resendCode: resendCode.code,
             };
 
         if ( user.multifactor_auth === 'phone' )
             return { 
                 ok: true, 
                 message: `created authentication code, send to phone number: ********${ String( user.phone ).slice(-2) }, after five minutes code will disappear`,
-                phone: `********${ String( user.phone ).slice(-2) }`
+                phone: `********${ String( user.phone ).slice(-2) }`,
+                resendCode: resendCode.code,
             };
     }
 

@@ -95,6 +95,29 @@ export class AuthService {
   }
 
   /**
+   * * Function to resend a code without need login again
+   * @param verifyCodeDto code to search if exists in authcodes collection
+   * @returns a new code to use in the endpoint 'oauth-login'
+   */
+     async resendCode({ code }: VerifyCodeDto, deviceInfo: IDeviceInfo ): Promise<ILoginResponse | Object> {
+      const authcode = await this.authcodeService.findByFields<Authcode>([
+        { field: 'code', value: code, type: 'id' },
+        { field: 'type', value: AUTHCODE_TYPES.resendCode, type: 'id' },
+      ]);
+  
+      if ( !authcode )
+        throw new NotFoundException(`Code: ${ code } has not been found or has expired`);
+  
+      const user = await this.userService.findOne<User>( String( authcode.userId ) );
+      if ( !user ) {
+        this.logger.error('User not found, the record has probably been manually removed from the database')
+        throw new InternalServerErrorException(`server error, user with id ${ user._id } not found`);
+      }
+      
+      return await this.authcodeService.createAuthcode( user, AUTHCODE_TYPES.accessOauth, deviceInfo );
+    }
+
+  /**
    * 
    * @param forgotPasswordDto email or phone of users that forgot his password
    * @param deviceInfo come 'os', 'client', 'device' and the location from where the request was made
