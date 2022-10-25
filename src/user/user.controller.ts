@@ -23,7 +23,7 @@ export class UserController {
     private readonly fileService: FileService,
   ) {}
 
-  @Auth( ValidRoles.admin )
+  @Auth([ ValidRoles.admin ])
   @Post()
   async create( @Body() createUserDto: CreateUserDto ) {
     return this.userService.createUserDto( createUserDto );
@@ -56,7 +56,7 @@ export class UserController {
   }
 
   @Patch(':id')
-  @Auth( ValidRoles.owner )
+  @Auth([ ValidRoles.owner ])
   @UseInterceptors( FileFieldsInterceptor([
       { name: 'avatar', maxCount: 5 },
       { name: 'background', maxCount: 5 },
@@ -81,13 +81,13 @@ export class UserController {
     return user;
   }
 
-  @Auth( ValidRoles.owner )
+  @Auth([ ValidRoles.owner ])
   @Patch('remove-all-files-from/:type/:id')
   async removeAllFilesFrom( @Param('type') type: string, @Param('id', ParseMongoIdPipe) id: string ) {
     return this.userService.removeAllFilesFrom( type.toLowerCase(), id );
   }
 
-  @Auth( ValidRoles.owner )
+  @Auth([ ValidRoles.owner ])
   @Patch('remove-file-from/:type/:id/:filename')
   async removeFileFrom( 
     @Param('type') type: string, 
@@ -97,7 +97,7 @@ export class UserController {
     return this.userService.removeFileFrom( type.toLowerCase(), id, filename );
   }
 
-  @Auth( ValidRoles.admin )
+  @Auth([ ValidRoles.admin ])
   @Delete(':id')
   async inactive(@Param('id', ParseMongoIdPipe) id: string) {
     return this.userService.inactive( id );

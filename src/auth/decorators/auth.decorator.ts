@@ -13,10 +13,16 @@ import { RoleProtected } from './role-protected.decorator';
  * * UseGuards, use the AuthGuard() from passport to inject the user from the request and
  * * validate the roles of user with the roles that was injected in the metadata with RoleProtected()
  */
-export function Auth(...roles: ValidRoles[]) {
-  return applyDecorators(
-    RoleProtected(...roles),
-    UseGuards( AuthGuard(), UserRoleGuard ),
-  );
-
+export function Auth( roles: ValidRoles[] = undefined, creatorGuard: any = undefined ) {
+  if ( creatorGuard ) {
+    return applyDecorators(
+      RoleProtected( roles ),
+      UseGuards( AuthGuard(), UserRoleGuard, creatorGuard ),
+    );
+  } else {
+    return applyDecorators(
+      RoleProtected( roles ),
+      UseGuards( AuthGuard(), UserRoleGuard ),
+    );
+  }
 }
