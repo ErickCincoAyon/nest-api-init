@@ -1,8 +1,11 @@
+import { Aggregate, AggregatePaginateResult, PaginateResult } from 'mongoose';
 import { ConflictException, Injectable, InternalServerErrorException, Logger, NotFoundException } from "@nestjs/common";
-import { IConfigPagination } from "../interfaces/config-pagination.interface";
-import { IGenericService } from "../interfaces/generic-service.interface";
+
 import { PaginationDto } from '../dtos/pagination.dto';
 import { IField } from "../interfaces/find-by-fields.interface";
+import { IGenericService } from "../interfaces/generic-service.interface";
+import { IConfigPagination } from "../interfaces/config-pagination.interface";
+import { IPopulateField } from '../interfaces/populate-field.interface';
 
 @Injectable()
 export class GenericService implements IGenericService {
@@ -11,7 +14,7 @@ export class GenericService implements IGenericService {
     
   constructor(
     private readonly docModel: any,
-    private readonly defaultPagination: IConfigPagination,
+    readonly defaultPagination: IConfigPagination,
     private readonly serviceName: string,
   ) { }
 
@@ -29,20 +32,47 @@ export class GenericService implements IGenericService {
     } catch (error) { await this.handleExceptions( error ) };
   }
 
-  async findAll<T,U extends PaginationDto>( queries: U ): Promise<T> {
+  async findAll<T,U extends PaginationDto>(
+    queries: U, 
+    populate: IPopulateField[] = undefined, 
+    aggregate: Aggregate<T[]> = undefined,
+  ): Promise<PaginateResult<T> | AggregatePaginateResult<T>> {
+
     const { defaultPage, defaultLimit, defaultOrder } = this.defaultPagination;
     const { page = defaultPage, limit = defaultLimit, order = defaultOrder, ...query } = queries;
-        
-    const docs = await this.docModel.paginate( query, { page, limit, ...order });
-    if ( !docs || docs.docs.length === 0 ) 
-    throw new NotFoundException(`Documents not found`);
+
+    let docs: PaginateResult<T> | AggregatePaginateResult<T>;
+    if ( !aggregate ) {
+
+      if ( !populate ) {
+        docs = await this.docModel.paginate( query, { page, limit, ...order });
+      } else {
+        docs = await this.docModel.paginate( query, { page, limit, ...order, populate });
+      }
+
+    } else {
+
+      docs = await this.docModel.aggregatePaginate( aggregate, { page, limit, ...order });
+      
+    }
+    
+    if ( !docs || docs.docs.length === 0 )
+      throw new NotFoundException(`Documents not found`);
 
     return docs;
   }
 
-  async findOne<T>( id: string ): Promise<T> {
-    const doc: T = await this.docModel.findById( id );
-    if ( !doc ) 
+  async findOne<T>( id: string, populate: IPopulateField[] = undefined ): Promise<T> {
+    let doc: T;
+    if ( !populate ) {
+
+      doc = await this.docModel.findById( id );
+    } else {
+      
+      doc = await this.docModel.findById( id ).populate(populate);
+    }
+    
+    if ( !doc )
       throw new NotFoundException(`doc with id: ${ id } not found`);
 
     return doc;
@@ -80,7 +110,7 @@ export class GenericService implements IGenericService {
   async findByFields<T>( fields: IField[] ): Promise<T> {
     let query = new Object;
     fields.map(( field: IField ) => {
-      if (( field.type === 'number' || field.type === 'id' ) && String( field.value ).trim() !== '' ) {
+      if (( field.type === 'number' || field.type === 'id' || field.type === 'boolean' ) && String( field.value ).trim() !== '' ) {
         query[field.field] = field.value;
       } else {
         query[field.field] = { $regex: new RegExp(["^", field.value, "$"].join(""), "i") };

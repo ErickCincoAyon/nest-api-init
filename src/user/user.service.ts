@@ -5,7 +5,6 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
 
 import * as argon2 from "argon2";
-import * as moment from 'moment';
 import { v4 as uuid } from 'uuid';
 import { GenericService } from 'src/common/providers/generic.service';
 import { ConfigService } from '@nestjs/config';
@@ -29,7 +28,7 @@ export class UserService extends GenericService {
 
     const user = await this.create<User, CreateUserDto>({
       ...createUserDto,
-      uuid: `${ uuid() }-${ moment().format().split('T')[0] }`,
+      uuid: uuid(),
       multifactor_auth: register_type,
       password: await argon2.hash( createUserDto.password ),
     });
@@ -90,7 +89,7 @@ export class UserService extends GenericService {
       users.map( async ( user: CreateUserDto ) => {
         const userSaved = await this.create<User, CreateUserDto>({
           ...user,
-          uuid: `${ uuid() }-${ moment().format().split('T')[0] }`,
+          uuid: uuid(),
           multifactor_auth: user.register_type,
           password: await argon2.hash( user.password ),
         });

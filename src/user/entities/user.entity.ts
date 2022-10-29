@@ -2,6 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Date, Document } from 'mongoose';
 import * as mongoosePaginate from 'mongoose-paginate-v2';
 import { MULTIFACTOR_AUTH_TYPES } from 'src/common/enums/multifactor-auth.enum';
+import { USER_GENDER_TYPES } from '../enums/user-gender-types.enum';
 
 /**
  * 
@@ -34,6 +35,9 @@ export class User extends Document {
 
     @Prop({ type: Object, trim: true })
     surname?: string;
+
+    @Prop({ type: String, trim: true, enum: USER_GENDER_TYPES,})
+    gender?: USER_GENDER_TYPES;
 
     @Prop({ type: String, trim: true })
     bio?: string;
