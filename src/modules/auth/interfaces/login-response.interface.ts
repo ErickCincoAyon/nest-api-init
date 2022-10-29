@@ -1,4 +1,4 @@
-import { User } from "src/user/entities/user.entity";
+import { User } from "src/modules/user/entities/user.entity";
 import { IUser } from "./user.interface";
 
 export interface ILoginResponse {

@@ -7,13 +7,13 @@ import { ParseMongoIdPipe } from 'src/common/pipes/parse-mongo-id.pipe';
 import { PaginateResult } from 'mongoose';
 import { User } from './entities/user.entity';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
-import { fileFilter, maxSize } from 'src/file/helpers/file-filter.helper';
-import { FileService } from 'src/file/file.service';
+import { fileFilter, maxSize } from 'src/modules/file/helpers/file-filter.helper';
+import { FileService } from 'src/modules/file/file.service';
 import { IUserFiles } from './interfaces/user-files.interface';
-import { Auth } from 'src/auth/decorators/auth.decorator';
-import { GetUser } from 'src/auth/decorators/get-user.decorator';
-import { IUser } from 'src/auth/interfaces/user.interface';
-import { ValidRoles } from 'src/auth/interfaces/valid-roles.enum';
+import { Auth } from 'src/modules/auth/decorators/auth.decorator';
+import { GetUser } from 'src/modules/auth/decorators/get-user.decorator';
+import { IUser } from 'src/modules/auth/interfaces/user.interface';
+import { ValidRoles } from 'src/modules/auth/interfaces/valid-roles.enum';
 
 @Controller('user')
 export class UserController {

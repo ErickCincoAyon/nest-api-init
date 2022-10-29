@@ -8,7 +8,7 @@ import * as argon2 from "argon2";
 import { v4 as uuid } from 'uuid';
 import { GenericService } from 'src/common/providers/generic.service';
 import { ConfigService } from '@nestjs/config';
-import { MailService } from 'src/mail/mail.service';
+import { MailService } from 'src/modules/mail/mail.service';
 import { MULTIFACTOR_AUTH_TYPES } from 'src/common/enums/multifactor-auth.enum';
 
 @Injectable()

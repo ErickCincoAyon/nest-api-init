@@ -1,6 +1,6 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
-import { CreateUserDto } from 'src/user/dto/create-user.dto';
-import { UserService } from 'src/user/user.service';
+import { CreateUserDto } from 'src/modules/user/dto/create-user.dto';
+import { UserService } from 'src/modules/user/user.service';
 import { USERS_SEED } from './data/user.seed';
 
 @Injectable()

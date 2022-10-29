@@ -5,13 +5,13 @@ import { ConfigModule } from '@nestjs/config';
 
 import { join } from 'path';
 import { CommonModule } from './common/common.module';
-import { UserModule } from './user/user.module';
+import { UserModule } from './modules/user/user.module';
 import { EnvConfiguration } from './config/env.config';
 import { JoiValidationSchema } from './config/joi-schema.validation';
 import { SeedModule } from './seed/seed.module';
-import { FileModule } from './file/file.module';
-import { AuthModule } from './auth/auth.module';
-import { MailModule } from './mail/mail.module';
+import { FileModule } from './modules/file/file.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { MailModule } from './modules/mail/mail.module';
 
 @Module({
   imports: [

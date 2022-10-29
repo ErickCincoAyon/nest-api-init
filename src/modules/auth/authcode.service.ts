@@ -6,7 +6,7 @@ import { GenericService } from 'src/common/providers/generic.service';
 import { Authcode } from './entities/authcode.entity';
 import { AUTHCODE_TYPES } from './interfaces/authcode-types.enum';
 import { User } from '../user/entities/user.entity';
-import { MailService } from 'src/mail/mail.service';
+import { MailService } from 'src/modules/mail/mail.service';
 import { IDeviceInfo } from './interfaces/device-info.interface';
 
 @Injectable()

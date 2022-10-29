@@ -1,6 +1,6 @@
 import { Injectable, UnauthorizedException, Logger, NotFoundException, InternalServerErrorException } from '@nestjs/common';
 import { UserService } from '../user/user.service';
-import { CreateUserDto } from 'src/user/dto/create-user.dto';
+import { CreateUserDto } from 'src/modules/user/dto/create-user.dto';
 import { JwtService } from '@nestjs/jwt';
 import { IJwtPayload } from './interfaces/jwt-payload.interface';
 import { LoginUserDto } from './dto/login-user.dto';
@@ -14,7 +14,7 @@ import { AUTHCODE_TYPES } from './interfaces/authcode-types.enum';
 import { VerifyCodeDto } from './dto/verify-code.dto';
 import { Authcode } from './entities/authcode.entity';
 import { NewPasswordDto } from './dto/new-password.dto';
-import { MailService } from 'src/mail/mail.service';
+import { MailService } from 'src/modules/mail/mail.service';
 import { IDeviceInfo } from './interfaces/device-info.interface';
 
 @Injectable()

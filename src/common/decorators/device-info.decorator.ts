@@ -1,7 +1,7 @@
 import { createParamDecorator, ExecutionContext, Logger, BadRequestException } from '@nestjs/common';
 import * as geoip from 'geoip-lite';
 import * as requestIp from '@supercharge/request-ip';
-import { IDeviceInfo } from 'src/auth/interfaces/device-info.interface';
+import { IDeviceInfo } from 'src/modules/auth/interfaces/device-info.interface';
 const DeviceDetector = require('node-device-detector');
 
 

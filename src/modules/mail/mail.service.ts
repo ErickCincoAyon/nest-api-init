@@ -1,10 +1,10 @@
 import { MailerService } from '@nestjs-modules/mailer';
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { Authcode } from 'src/auth/entities/authcode.entity';
-import { IDeviceInfo } from 'src/auth/interfaces/device-info.interface';
+import { Authcode } from 'src/modules/auth/entities/authcode.entity';
+import { IDeviceInfo } from 'src/modules/auth/interfaces/device-info.interface';
 import { MULTIFACTOR_AUTH_TYPES } from 'src/common/enums/multifactor-auth.enum';
-import { User } from 'src/user/entities/user.entity';
+import { User } from 'src/modules/user/entities/user.entity';
 import { Twilio } from 'twilio';
 import { ITwilioSettings } from './interfaces/twilio-settings.interface';
 

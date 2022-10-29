@@ -1,5 +1,5 @@
 import { createParamDecorator, ExecutionContext, InternalServerErrorException } from '@nestjs/common';
-import { User } from 'src/user/entities/user.entity';
+import { User } from 'src/modules/user/entities/user.entity';
 
 
 /**

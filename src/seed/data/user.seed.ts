@@ -1,5 +1,5 @@
 import { MULTIFACTOR_AUTH_TYPES } from 'src/common/enums/multifactor-auth.enum';
-import { CreateUserDto } from 'src/user/dto/create-user.dto';
+import { CreateUserDto } from 'src/modules/user/dto/create-user.dto';
 
 export const USERS_SEED: CreateUserDto[] = [
     {   register_type: MULTIFACTOR_AUTH_TYPES.email, username: 'Juubi', email: 'vjuubi@gmail.com', password: "DevPass#" },

@@ -1,4 +1,4 @@
-import { IsEmail, IsNumber, IsOptional, IsPositive, IsString, Matches, Max, MaxLength, Min, MinLength } from "class-validator";
+import { IsEmail, IsNumber, IsOptional, Max, Min } from "class-validator";
 import { ForgotPasswordValidation } from "../decorators/forgot-password-validation.decorator";
 
 export class ForgotPasswordDto {
